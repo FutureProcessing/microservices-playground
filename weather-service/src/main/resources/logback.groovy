@@ -4,7 +4,7 @@ import ch.qos.logback.core.ConsoleAppender
 
 import static ch.qos.logback.classic.Level.INFO
 
-def syslogSuffixPattern = "service %thread %logger %msg"
+def syslogSuffixPattern = "weather_service %thread %logger %msg"
 def APP_PROFILE = System.getenv("SPRING_PROFILES_ACTIVE");
 def targetAppender = "CONSOLE"
 
@@ -14,7 +14,6 @@ if ("syslog".equals(APP_PROFILE)) {
         port = 514
         facility = "user"
         suffixPattern = syslogSuffixPattern
-        stackTracePattern = syslogStackTracePattern
     }
     targetAppender = "SYSLOG"
 } else {
